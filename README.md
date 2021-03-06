@@ -3,7 +3,9 @@ CKA Lab
 
 Laboratory environment for "Certified Kubernetes Administrator (CKA)" Linux Academy course
 
-kubernetes v1.19 (to use a different version look at https://github.com/pbacterio/cka_lab/tags)
+kubernetes v1.20 (to use a different version look at https://github.com/pbacterio/cka_lab/tags)
+
+Install VirtualBox 6 minimal to continue.
 
 Build cluster
 -------------
@@ -33,13 +35,22 @@ So you can use kubectl on a easy way.
 Example:
 
 ```
-[pbacterio@localhost cka_lab]$ vagrant ssh master
-Last login: Mon Jan 28 09:24:31 2019 from 192.168.121.1
-[vagrant@master ~]$ kubectl get nodes
-NAME     STATUS   ROLES    AGE     VERSION
-master   Ready    master   2m57s   v1.13.2
-node1    Ready    <none>   2m15s   v1.13.2
-node2    Ready    <none>   2m12s   v1.13.2
+> vagrant ssh master
+Linux master 4.19.0-14-amd64 #1 SMP Debian 4.19.171-2 (2021-01-30) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Mar  6 12:39:41 2021 from 10.0.2.2
+vagrant@master:~$ kubectl get nodes -o wide
+NAME     STATUS   ROLES                  AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION    CONTAINER-RUNTIME
+master   Ready    control-plane,master   14m     v1.20.4   10.0.2.15     <none>        Debian GNU/Linux 10 (buster)   4.19.0-14-amd64   docker://18.9.1
+node1    Ready    <none>                 8m53s   v1.20.4   10.0.2.15     <none>        Debian GNU/Linux 10 (buster)   4.19.0-14-amd64   docker://18.9.1
+node2    Ready    <none>                 8m44s   v1.20.4   10.0.2.15     <none>        Debian GNU/Linux 10 (buster)   4.19.0-14-amd64   docker://18.9.1
+
 ```
 
 
